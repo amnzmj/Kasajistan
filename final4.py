@@ -88,9 +88,9 @@ def evolutionary_algorithm(population_size, mutation_rate, max_generations):
     return  generation_number, fitness_values, population, index
 # Run the evolutionary algorithm
 generation_number, fitness_values, population, index= evolutionary_algorithm(population_size=10, mutation_rate=0.1, max_generations=10)
-print("poblacion", population)
-print("fitness values",fitness_values)
-print(index)
+#print("poblacion", population)
+#print("fitness values",fitness_values)
+#print(index)
 print("ruta mas corta:", population[index])
 print("distancia:", fitness_values[index])
 print("generaciones", generation_number)
