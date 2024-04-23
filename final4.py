@@ -48,10 +48,6 @@ def crossover(parent1, parent2):
     crossover_point = random.randint(1, len(parent1) - 1) #Se resta 1 a la longitud de parent1 para asegurarse de que el punto de cruce no sea el último índice de la lista. 
     child1 = parent1[:crossover_point] + [city for city in parent2 if city not in parent1[:crossover_point]]
     child2 = parent2[:crossover_point] + [city for city in parent1 if city not in parent2[:crossover_point]]
-    # print("parent 1",parent1)
-    # print("parent 2",parent2)
-    # print("child 1",child1)
-    # print("child 2",child2)
     
     return child1, child2
 # Mutation for TSP
@@ -74,10 +70,10 @@ def roulette_wheel_selection(population, fitness_values):
             if random_value <= cumulative_probability:
                 selected_parents.append(population[i])
                 break
-            #print()
+            
     return selected_parents
 # Evolutionary algorithm for TSP
-def evolutionary_algorithm(population_size, mutation_rate, max_generations):
+def evolutionary_algorithm(population_size, mutation_rate, max_generations):#hiperparámetros
     population = [generate_random_route(ciudades) for _ in range(population_size)]
     generation_number = 1
     #print(population)
@@ -110,8 +106,8 @@ def evolutionary_algorithm(population_size, mutation_rate, max_generations):
     #print(population)
     
     return  generation_number, fitness_values, population, index
-# Run the evolutionary algorithm
-generation_number, fitness_values, population, index= evolutionary_algorithm(population_size=10, mutation_rate=0.3, max_generations=100)
+# main
+generation_number, fitness_values, population, index= evolutionary_algorithm(population_size=100, mutation_rate=0.2, max_generations=15500)
 print("poblacion", population)
 print("fitness values",fitness_values)
 print(index)
