@@ -74,7 +74,7 @@ def roulette_wheel_selection(population, fitness_values):
             if random_value <= cumulative_probability:
                 selected_parents.append(population[i])
                 break
-            print()
+            #print()
     return selected_parents
 # Evolutionary algorithm for TSP
 def evolutionary_algorithm(population_size, mutation_rate, max_generations):
@@ -115,6 +115,6 @@ generation_number, fitness_values, population, index= evolutionary_algorithm(pop
 print("poblacion", population)
 print("fitness values",fitness_values)
 print(index)
-print("ruta mas corta:", population[index])
+print("ruta mas corta:", population[index]) 
 print("distancia:", fitness_values[index])
 print("generaciones", generation_number)
