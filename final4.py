@@ -44,7 +44,7 @@ def generate_random_route(ciudades):
     random.shuffle(route)
     return route
 def crossover(parent1, parent2):
-    # print("parent 1 t",parent1)
+    # print("parent 1 ",parent1)
     crossover_point = random.randint(1, len(parent1) - 1) #Se resta 1 a la longitud de parent1 para asegurarse de que el punto de cruce no sea el último índice de la lista. 
     child1 = parent1[:crossover_point] + [city for city in parent2 if city not in parent1[:crossover_point]]
     child2 = parent2[:crossover_point] + [city for city in parent1 if city not in parent2[:crossover_point]]
@@ -56,15 +56,15 @@ def crossover(parent1, parent2):
     return child1, child2
 # Mutation for TSP
 def mutate(route, mutation_rate):
-    if random.random() < mutation_rate:#probabilidad que mute
+    if random.random() < mutation_rate:#probabilidad que mute segun nuestro mutation rate
         idx1, idx2 = random.sample(range(len(route)), 2)
-        route[idx1], route[idx2] = route[idx2], route[idx1]
+        route[idx1], route[idx2] = route[idx2], route[idx1]#intercambia dos ciudades en la ruta
     return route
 # Roulette wheel selection for TSP
 def roulette_wheel_selection(population, fitness_values):
     total_fitness = sum(fitness_values)
     #print(total_fitness)
-    selection_probabilities = [fitness / total_fitness for fitness in fitness_values]
+    selection_probabilities = [fitness / total_fitness for fitness in fitness_values] #la prob de selección se calcula dividiendo el fitness individual sobre el total fitness de la población 
     #print(selection_probabilities)
     cumulative_probabilities = [sum(selection_probabilities[:i+1]) for i in range(len(selection_probabilities))]
     selected_parents = []
